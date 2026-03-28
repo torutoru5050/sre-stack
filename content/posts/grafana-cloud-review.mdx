@@ -1,0 +1,79 @@
+---
+title: "Grafana Cloud Review — Pricing, Pros, and Cons for SRE Teams"
+date: "2026-03-20"
+tags: ["observability", "sre", "review"]
+excerpt: "Grafana Cloud bundles Prometheus, Loki, and Tempo into a managed platform. Here's an honest review after running it in production."
+---
+
+## What Is Grafana Cloud?
+
+Grafana Cloud is Grafana Labs' managed observability platform. It bundles:
+
+- **Grafana** — dashboards and visualization
+- **Mimir** — Prometheus-compatible metrics backend
+- **Loki** — log aggregation (think Prometheus, but for logs)
+- **Tempo** — distributed tracing
+- **Alerting** — unified alerting across all data sources
+- **OnCall** — on-call management (formerly Amixr)
+
+The pitch: get the open-source Grafana stack without running it yourself.
+
+## The Good
+
+### Open Standards
+Everything is built on open standards. Prometheus metrics, OpenTelemetry traces, and LogQL for logs. No vendor lock-in — if you leave, your dashboards and alerts still work with self-hosted Grafana.
+
+### Generous Free Tier
+The free tier includes 10K metrics series, 50 GB logs, and 50 GB traces per month. That's enough for a small team or side project, and it's genuinely useful (not a "free trial" in disguise).
+
+### Dashboard Quality
+Grafana dashboards remain the gold standard. If you're used to Grafana, the Cloud experience is identical — same editor, same plugins, same flexibility.
+
+### Prometheus Compatibility
+If you're already running Prometheus, migration is straightforward. Point your remote_write at Grafana Cloud and you're done. Your PromQL queries work as-is.
+
+{/* TODO: Add your personal experience here — 10-15 lines about your migration / daily usage */}
+
+## The Not-So-Good
+
+### Loki Limitations
+Loki is not Elasticsearch. The lack of full-text indexing means some log queries are slow. If you're coming from the ELK stack and expect instant regex searches across billions of logs, you'll be disappointed.
+
+### Learning Curve
+The stack has a lot of moving parts. Mimir, Loki, Tempo — each has its own query language and mental model. It's powerful, but onboarding new team members takes time.
+
+### Alerting UX
+Grafana's unified alerting is functional but not intuitive. Creating alert rules involves too many clicks and the evaluation model (folder-based, with notification policies) confuses teams used to simpler setups.
+
+## Pricing
+
+| Tier | Metrics | Logs | Traces | Price |
+|------|---------|------|--------|-------|
+| Free | 10K series | 50 GB | 50 GB | $0 |
+| Pro | 20K+ series | 100 GB+ | 100 GB+ | Usage-based |
+| Advanced | Custom | Custom | Custom | Custom |
+
+Pro pricing is usage-based: ~$8/1K active metrics series, ~$0.50/GB logs. It's competitive with Datadog, and significantly cheaper for metrics-heavy workloads (Prometheus scraping generates a lot of series).
+
+## Who Should Use Grafana Cloud?
+
+- Teams already using Prometheus + Grafana self-hosted and want to stop managing infrastructure
+- Cost-conscious teams that want a credible alternative to Datadog/New Relic
+- Organizations that value open standards and want to avoid vendor lock-in
+
+## Who Should Look Elsewhere?
+
+- Teams that need a polished, batteries-included APM (Datadog/New Relic are more turnkey)
+- Organizations without Prometheus/Grafana experience — the learning curve is real
+- Teams that rely heavily on full-text log search (consider Elasticsearch or Datadog Logs)
+
+<AffiliateCTA
+  name="Grafana Cloud"
+  url="https://grafana.com/cloud"
+  description="The open-source observability stack, fully managed. Free tier with 10K metrics, 50 GB logs, and 50 GB traces."
+  cta="Start Free"
+/>
+
+## Bottom Line
+
+Grafana Cloud is the best option for teams that want enterprise observability without enterprise pricing. The open-standards approach means you're never locked in, and the free tier is genuinely useful. The rough edges (Loki query speed, alerting UX) are real but improving fast.

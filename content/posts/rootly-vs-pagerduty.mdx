@@ -1,0 +1,59 @@
+---
+title: "Rootly vs PagerDuty — An SRE's Honest Take (2026)"
+date: "2026-03-28"
+tags: ["incident-management", "sre", "comparison"]
+excerpt: "Rootly and PagerDuty both handle incident management, but they solve different problems. Here's how they compare from someone who's used both on-call."
+---
+
+## TL;DR
+
+**PagerDuty** is the industry standard for on-call alerting and escalation. **Rootly** is a newer player focused on incident coordination — think Slack-native war rooms, runbooks, and post-incident workflows. They're not direct replacements for each other, but there's growing overlap.
+
+## On-Call & Alerting
+
+PagerDuty dominates here. Decades of integrations, robust escalation policies, and a mobile app that *will* wake you up at 3 AM. Rootly has basic alerting but it's not their core strength.
+
+| Feature | PagerDuty | Rootly |
+|---------|-----------|--------|
+| On-call scheduling | Excellent | Basic |
+| Escalation policies | Advanced | Simple |
+| Mobile alerts | Native app | Slack / SMS |
+| Integrations | 700+ | 50+ |
+
+## Incident Coordination
+
+This is where Rootly shines. When an incident fires, Rootly automatically creates a Slack channel, pages the right people, attaches runbooks, and starts a timeline. PagerDuty added similar features with their Incident Workflows, but it still feels bolted on.
+
+{/* TODO: Add your personal experience here — 10-15 lines about using both tools during real incidents */}
+
+## Post-Incident / Retros
+
+Rootly generates retrospective documents automatically from the incident timeline. PagerDuty's postmortem feature exists but is bare-bones compared to Rootly's templates and action item tracking.
+
+## Pricing
+
+PagerDuty starts at $21/user/month (Professional). Enterprise pricing gets expensive fast with large teams. Rootly's pricing is less transparent — you'll need to talk to sales — but teams report it's competitive, especially for the coordination features you'd otherwise build with duct tape and Slack bots.
+
+## When to Choose What
+
+- **Choose PagerDuty** if on-call alerting is your priority, you need hundreds of integrations, or your org already uses it.
+- **Choose Rootly** if your incidents are Slack-heavy, you want automated retros, or your current incident process is a mess of manual Slack channels.
+- **Use both** — many teams use PagerDuty for alerting and Rootly for coordination. They integrate well together.
+
+<AffiliateCTA
+  name="Rootly"
+  url="https://rootly.com"
+  description="Automate your incident management workflow. Slack-native war rooms, runbooks, and retros."
+  cta="Request a Demo"
+/>
+
+<AffiliateCTA
+  name="PagerDuty"
+  url="https://www.pagerduty.com"
+  description="The industry standard for on-call alerting and incident response."
+  cta="Start Free Trial"
+/>
+
+## Bottom Line
+
+There's no single "best" tool here — it depends on where your incident process hurts the most. If you're drowning in alerts, PagerDuty. If your incidents are chaotic Slack threads with no follow-up, Rootly. If budget allows, running both is genuinely the best setup I've seen.
