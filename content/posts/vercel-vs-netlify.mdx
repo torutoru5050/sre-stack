@@ -1,0 +1,80 @@
+---
+title: "Vercel vs Netlify — The Definitive Comparison for 2026"
+date: "2026-03-27"
+tags: ["cloud", "developer-tools", "comparison"]
+excerpt: "Vercel and Netlify both deploy your frontend fast. But which platform is better for your stack, team, and budget?"
+---
+
+## TL;DR
+
+**Vercel** is the best choice if you're using Next.js or want bleeding-edge framework support. **Netlify** is more framework-agnostic and has a stronger ecosystem for static sites, forms, and identity. Both have generous free tiers.
+
+## Framework Support
+
+Vercel is built by the creators of Next.js, and it shows. Next.js features like ISR, Server Components, and Middleware work flawlessly on Vercel — often before they work anywhere else.
+
+Netlify supports Next.js too (via their runtime adapter), but the experience isn't as seamless. Where Netlify shines is framework neutrality: Astro, Hugo, 11ty, SvelteKit — they all feel like first-class citizens.
+
+| Feature | Vercel | Netlify |
+|---------|--------|---------|
+| Next.js support | Native (best) | Good (adapter) |
+| Astro/Hugo/11ty | Good | Excellent |
+| Edge Functions | Yes | Yes |
+| Serverless Functions | Node, Go, Python, Ruby | Node, Go, Deno |
+| Build times | Fast | Fast |
+
+## Developer Experience
+
+Both platforms nail the "git push to deploy" workflow. Connect your repo, push to main, see your site live in under a minute.
+
+**Vercel** has a cleaner dashboard, better preview deployments with comment integration, and the `vercel` CLI is excellent for local development.
+
+**Netlify** has more built-in features: form handling, identity/auth, split testing, and large media support. If you need these, Netlify saves you from adding third-party services.
+
+{/* TODO: Add your personal experience here — what's your actual deploy workflow? */}
+
+## Edge & Serverless
+
+Both platforms support edge functions and serverless functions. Vercel's Edge Middleware is tightly integrated with Next.js. Netlify's Edge Functions use Deno and work well across frameworks.
+
+For serverless, Vercel supports longer execution times on Pro plans (up to 300s). Netlify's functions have a 10-second default (26s on Pro) with background functions for longer tasks.
+
+## Pricing
+
+Both have generous free tiers, but the paid tiers differ:
+
+- **Vercel Free**: 100 GB bandwidth, unlimited sites
+- **Vercel Pro**: $20/user/month — 1 TB bandwidth, more build hours
+- **Netlify Free**: 100 GB bandwidth, 300 build minutes
+- **Netlify Pro**: $19/user/month — 1 TB bandwidth, 25K form submissions
+
+For solo developers and small projects, both free tiers are more than enough. At scale, pricing depends heavily on bandwidth and build usage.
+
+## Analytics & Monitoring
+
+Vercel has built-in Web Vitals tracking and Speed Insights on Pro plans. Their analytics focus on performance metrics that matter for user experience.
+
+Netlify offers server-side analytics (no client-side JavaScript) as an add-on ($9/site/month). It's privacy-friendly but less detailed than Vercel's offering.
+
+## When to Choose What
+
+- **Choose Vercel** if you're building with Next.js, you want the best preview deployment experience, or you need edge middleware.
+- **Choose Netlify** if you want framework flexibility, you need built-in forms/auth/split-testing, or you prefer a more open ecosystem.
+
+<AffiliateCTA
+  name="Vercel"
+  url="https://vercel.com"
+  description="The platform for frontend developers. Deploy Next.js, Astro, and more with zero config."
+  cta="Start Deploying"
+/>
+
+<AffiliateCTA
+  name="Netlify"
+  url="https://www.netlify.com"
+  description="Build, deploy, and scale modern web projects. Free tier includes forms, identity, and 100 GB bandwidth."
+  cta="Start Free"
+/>
+
+## Bottom Line
+
+You can't go wrong with either platform in 2026. If Next.js is your framework, Vercel is the obvious choice. For everything else, evaluate based on which built-in features matter most to your project. Both platforms are profitable, well-funded, and not going anywhere.
