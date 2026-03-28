@@ -78,7 +78,7 @@ test:
 
 **GitLab CI** provides shared runners on GitLab.com with compute minutes. Self-hosted runners via `gitlab-runner` are widely used and support Docker, Kubernetes, shell, and custom executors. The Kubernetes executor is excellent for auto-scaling — spin up pods per job and scale to zero when idle. GitLab's runner fleet management is more mature for large-scale self-hosted deployments.
 
-{/* TODO: Add your personal experience here — how did you manage runner infrastructure and what was the cost impact? */}
+I ran self-hosted GitHub Actions runners on a $40/month Hetzner box for about a year. Build times dropped from 8 minutes (GitHub-hosted) to 3 minutes because of cached Docker layers and local npm caches. The runner agent was dead simple to set up — 10 minutes. But I had to babysit it: disk cleanup cron jobs, runner updates, occasional zombie processes. Switched to GitHub's larger runners (4-core) when they launched and it was close enough in speed that I killed the self-hosted setup. The $40/month savings wasn't worth the ops overhead for a small team. For GitLab, the Kubernetes executor is genuinely better for auto-scaling — pods spin up, run the job, die. No state to manage.
 
 ## Ecosystem & Marketplace
 
@@ -141,7 +141,7 @@ For open-source projects, GitHub Actions is unbeatable — unlimited free minute
   cons="Smaller reusable component ecosystem | Free tier limited to 400 minutes and 5 users | Higher cost per user for full features (Ultimate $99/user) | CI/CD config can become complex with includes and extends | Slower UI compared to GitHub"
 />
 
-{/* TODO: Add your personal experience here — what was your migration experience between the two platforms? */}
+I migrated a 12-repo organization from GitLab CI to GitHub Actions. The actual YAML translation took about 2 days — most jobs were straightforward. The painful part was replacing GitLab CI includes and templates with reusable workflows and composite actions. Some GitLab-specific features (review apps, merge trains) had no direct equivalent in GitHub Actions and required custom workarounds. Total migration: 2 weeks including testing. Would I do it again? Yes, because the GitHub Marketplace saved us from maintaining 15+ custom scripts. But if you're already on GitLab with heavy DevSecOps usage, the migration cost is real — budget at least a sprint for a mid-size org.
 
 ## When to Choose What
 

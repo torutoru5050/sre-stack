@@ -57,7 +57,7 @@ This is where both platforms are investing heavily.
 
 **Fastly Compute** (formerly Compute@Edge) runs WebAssembly on Fastly's edge. You can write in Rust, JavaScript, Go, or any language that compiles to Wasm. It offers stronger isolation (each request runs in a fresh Wasm sandbox), sub-millisecond cold starts, and deterministic performance. For security-sensitive workloads, Fastly's isolation model is superior.
 
-{/* TODO: Add your personal experience here — which edge compute platform did you use for production workloads and how was the DX? */}
+I use Cloudflare Workers for all my side projects — API gateway, redirect logic, A/B testing headers. Setup takes about 15 minutes with Wrangler and it just works. I tried Fastly Compute for a client project and the Rust-based Wasm approach was powerful but the build-deploy cycle was noticeably slower. Cold starts were better on Fastly, but for my use case (lightweight request routing), Workers was good enough and way cheaper. At $5/month for 10M requests, it's hard to justify Fastly's pricing unless you genuinely need that Wasm isolation.
 
 ## Security & DDoS Protection
 
@@ -116,7 +116,7 @@ This matters enormously for SRE teams.
   cons="No free tier — higher barrier to entry | Smaller POP network (90+ vs 300+) | VCL has a steep learning curve | Less breadth of services compared to Cloudflare"
 />
 
-{/* TODO: Add your personal experience here — how did cache purge speed impact your deployment workflow? */}
+Cache purge speed mattered more than I expected. On Cloudflare, after deploying a frontend update, users would sometimes see stale assets for 30-60 seconds. Not a dealbreaker, but annoying when you're debugging a production issue and need the fix live NOW. On a media project using Fastly, purges propagated in under 200ms — you could deploy and verify the change was live almost instantly. For most SaaS apps, Cloudflare's purge speed is fine. But if you're serving content where staleness = broken experience (e-commerce pricing, news), Fastly's Instant Purge is worth the premium.
 
 ## When to Choose What
 

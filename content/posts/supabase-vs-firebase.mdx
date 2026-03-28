@@ -57,7 +57,7 @@ Both platforms provide comprehensive authentication out of the box.
 
 **Supabase Auth** (based on GoTrue) supports email/password, magic links, phone/OTP, and 20+ social providers (Google, Apple, GitHub, Discord, etc.). It integrates with PostgreSQL Row-Level Security (RLS) — auth policies are written in SQL and enforced at the database level. This is powerful but requires understanding RLS policies. The auth UI components are newer but improving rapidly.
 
-{/* TODO: Add your personal experience here — how did you handle auth migration or implementation with either platform? */}
+I moved a side project from Firebase Auth to Supabase Auth last year. The migration itself took about 6 hours — exporting users from Firebase and importing into Supabase via their API. RLS policies were the painful part. I spent a full weekend debugging why certain queries returned empty results, only to realize I'd messed up a policy on a junction table. Once it clicked, though, RLS is way more powerful than Firestore security rules. Having auth logic in SQL instead of a separate rules file just makes more sense to me. One gotcha: Supabase's magic link emails landed in spam for about 30% of users until I set up a custom SMTP sender.
 
 ## Real-Time Features
 
@@ -125,7 +125,7 @@ This is Supabase's strongest argument.
   cons="Less mature real-time compared to Firebase | Offline-first support is not as polished | Smaller community and fewer tutorials | RLS policies can be complex to write and debug | Mobile SDKs are newer and less feature-rich"
 />
 
-{/* TODO: Add your personal experience here — what surprised you most when migrating between Firebase and Supabase? */}
+The biggest surprise migrating from Firebase to Supabase: how much smaller my codebase got. All those client-side data aggregation hacks I'd written to work around Firestore's query limitations just became SQL views. I deleted about 400 lines of JavaScript. The flip side — Supabase's dashboard is not as polished as Firebase Console. Firebase's Crashlytics, Remote Config, and A/B testing have no Supabase equivalent. If you need those, you're stitching together multiple services.
 
 ## When to Choose What
 

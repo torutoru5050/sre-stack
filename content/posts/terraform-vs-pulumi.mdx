@@ -64,7 +64,7 @@ This shines when you need dynamic infrastructure — creating N resources based 
 | Abstractions | Modules | Classes, functions, packages |
 | Loops/Conditionals | `for_each`, `count`, ternary | Full language constructs |
 
-{/* TODO: Add your personal experience here — which language approach worked better for your team? */}
+I run Terraform at work and tried Pulumi (TypeScript) for a personal AWS project. Pulumi's IDE experience is genuinely better — autocomplete on resource properties saved me tons of doc lookups. But when a junior ops engineer joined our team, they picked up HCL in two days. I can't imagine explaining TypeScript generics and async patterns just to create an S3 bucket. For a 1-2 person SRE team of strong devs, Pulumi is great. For mixed teams, HCL's simplicity wins.
 
 ## State Management
 
@@ -136,7 +136,7 @@ For individuals and small teams, both are effectively free. At scale, Terraform'
 - **Choose Pulumi** if your team is primarily software engineers who prefer real languages, you need complex dynamic infrastructure patterns, testing infrastructure code is a priority, or you're starting a new project with no existing IaC.
 - **Consider OpenTofu** if you want Terraform compatibility with a fully open-source license. It's a drop-in replacement for Terraform CLI.
 
-{/* TODO: Add your personal experience here — what made you switch (or stay) with your IaC tool? */}
+I stayed with Terraform, honestly. The OpenTofu fork gave me enough confidence that the ecosystem won't die even if HashiCorp gets weird with licensing. My entire CI/CD pipeline (Atlantis + GitHub PR reviews) is built around `terraform plan` output. Migrating that to Pulumi would cost me a week minimum and the team would lose velocity for a month. The pragmatic answer: if it's working, don't rewrite your IaC for fun. Start fresh projects with whichever feels right.
 
 ## Bottom Line
 

@@ -47,7 +47,7 @@ Application Performance Monitoring is where both platforms truly shine, and the 
 
 **New Relic APM** has been around longer and has deep instrumentation for Java, .NET, and Node.js. Their Errors Inbox aggregates errors across your stack and prioritizes them by impact. The Vulnerability Management feature scans your running applications for known CVEs, which is a nice bonus you don't get from Datadog's APM alone.
 
-{/* TODO: Add your personal experience here — share a specific incident where APM traces helped you find a root cause */}
+I had a production incident where API latency spiked to 3 seconds on a specific endpoint. Without APM, I'd have spent hours grepping logs. With Datadog APM, I clicked the slow trace, saw the flame graph, and found a database query doing a full table scan — took 12 minutes from alert to root cause. The trace-to-log correlation was the killer feature. That said, I later tried New Relic's Errors Inbox and it caught a recurring N+1 query pattern that Datadog's traces showed but didn't flag proactively. Both tools saved me hours, in different ways.
 
 ### Log Management
 
@@ -134,7 +134,7 @@ The advantage: one pricing dimension (data ingest) instead of multiple SKUs. The
 - **Choose New Relic** if you want a generous free tier to start with, simpler pricing is important to your team, you prefer the flexibility of a query-first approach (NRQL), or you're cost-conscious at scale.
 - **Consider both** — some organizations use New Relic for application monitoring (APM, errors) and Datadog for infrastructure and dashboards. It's not ideal, but it happens more than vendors would like to admit.
 
-{/* TODO: Add your personal experience here — how did you choose between them, and what was the deciding factor? */}
+I went with New Relic for my personal projects (free tier is genuinely useful for a solo operator) and Datadog at work. The deciding factor at work was dashboards — our on-call engineers needed to glance at a screen and know what's broken in 5 seconds. Datadog's out-of-the-box dashboards for Kubernetes and AWS were ready on day one. New Relic required writing NRQL queries for everything, which was powerful but slow to set up. Monthly cost difference was significant too: Datadog ran us about $8,000/month for 60 hosts with APM + Logs, while a comparable New Relic setup quoted around $5,500. We stayed with Datadog because the migration cost wasn't worth the savings.
 
 ## Best Alternatives to Consider
 

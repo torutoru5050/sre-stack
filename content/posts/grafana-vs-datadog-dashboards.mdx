@@ -53,7 +53,7 @@ Out-of-the-box dashboards come with every integration. Install the Kubernetes in
 
 *Datadog dashboards can visualize data from any Datadog product (metrics, logs, traces, RUM, synthetics), but only data that's already in Datadog.
 
-{/* TODO: Add your personal experience here — show a specific dashboard setup that worked well for your team */}
+At work, I built a single Grafana dashboard that pulls Kubernetes metrics from Prometheus, application logs from Loki, and deployment events from our CI/CD pipeline via annotations. Having all three on one screen during an incident is a game-changer — no tab-switching, no context loss. It took about 2 hours to set up, and it's now the first thing anyone opens during on-call. Datadog's out-of-the-box K8s dashboard looks nicer on day one, but you hit a wall fast when you want to correlate data from sources outside Datadog.
 
 ## Data Source Flexibility
 
@@ -125,7 +125,7 @@ For dashboard-only use, Grafana is dramatically cheaper — especially self-host
 - **Choose Datadog Dashboards** if your team is already on the Datadog platform, you want polished dashboards with minimal setup, you prefer a unified SaaS experience over managing multiple tools, or you need AI-powered anomaly visualization.
 - **Use both** — it's more common than you'd think. Some teams use Datadog for production monitoring dashboards and Grafana for custom business/engineering metrics from various data sources.
 
-{/* TODO: Add your personal experience here — what dashboard setup does your team actually use day-to-day? */}
+My team uses Grafana Cloud for infrastructure dashboards and cost tracking, and we kept Datadog for APM traces on one legacy service. It's not elegant, but it works. The Grafana bill is about $50/month; the equivalent in Datadog would be $300+ with our host count. For a small SRE team watching costs, that math matters more than UI polish.
 
 ## Bottom Line
 

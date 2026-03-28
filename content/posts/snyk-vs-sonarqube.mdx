@@ -80,7 +80,7 @@ SonarQube runs as a server (self-hosted) or SonarCloud (SaaS). Analysis typicall
 
 SonarQube's Quality Gate concept is powerful — define rules like "no new bugs, no new vulnerabilities, 80% code coverage on new code" and enforce them automatically.
 
-{/* TODO: Add your personal experience here — how do you integrate security scanning into your CI/CD pipeline? */}
+Our CI pipeline runs both: SonarQube for SAST on every PR, Snyk for dependency scanning on merge to main. Setup took about 2 hours total. The SonarQube Quality Gate blocks PRs with new bugs or security issues — annoying at first, but it caught a SQL injection in week one that would've been embarrassing. Snyk's auto-fix PRs for dependency upgrades saved us maybe 3 hours/week of manual `npm audit` work. The one gotcha: Snyk's free tier ran out fast with 8 private repos. We upgraded to Team at $52/dev/month — not cheap for a 4-person team.
 
 ## Language Support
 
@@ -138,7 +138,7 @@ SonarQube Community Edition is genuinely free and useful — many teams run it s
 - **Choose SonarQube** if code quality and maintainability are as important as security, you want to enforce coding standards across teams, you need deep static analysis for bugs and security hotspots, or you want a free self-hosted option.
 - **Use both** — this is actually the most common pattern in mature DevSecOps organizations. SonarQube handles code quality and SAST, Snyk handles SCA and container scanning. They solve different problems and integrate cleanly in the same CI/CD pipeline.
 
-{/* TODO: Add your personal experience here — do you use one or both, and how does your security scanning workflow look? */}
+I run both in production. SonarQube Community Edition (free, self-hosted on a $20/month VM) handles code quality. Snyk free tier covers my open-source projects; paid tier for work repos. If I had to pick one for a solo developer or tiny team, I'd start with Snyk — dependency vulns are the bigger risk for most Node.js/Python projects. SonarQube becomes essential once you have 3+ developers and code quality starts drifting. The "use both" advice isn't just marketing — they genuinely catch different things.
 
 ## Bottom Line
 

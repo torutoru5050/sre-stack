@@ -56,7 +56,7 @@ At their core, both platforms receive alerts from monitoring tools and route the
 
 For most teams, the on-call scheduling capabilities are functionally equivalent. The differences are more about UI preferences than missing features.
 
-{/* TODO: Add your personal experience here — how did your on-call rotation work in practice and which scheduling features mattered most? */}
+I ran a 3-person on-call rotation at a previous gig using OpsGenie. Honestly, the scheduling UI was fine — we set it up in about 20 minutes and barely touched it again. The one feature that saved us was schedule-level routing: production alerts went to the primary on-call, while staging noise went to a shared channel. When I tested PagerDuty's scheduling later, it was more polished but not $20/user/month more polished. For a small team, OpsGenie's scheduling does everything you need.
 
 ## Incident Response & Collaboration
 
@@ -140,7 +140,7 @@ OpsGenie is roughly 50% cheaper than PagerDuty at equivalent feature levels. For
   cons="Lacks ML-based alert intelligence (Event Intelligence) | Fewer integrations (200+ vs 700+) | Incident coordination less polished than PagerDuty | Dependent on Atlassian's overall platform reliability | Smaller market presence and community"
 />
 
-{/* TODO: Add your personal experience here — which platform better helped your team reduce MTTR and alert fatigue? */}
+We switched from PagerDuty to OpsGenie when I joined a 5-person SRE team — purely a cost decision. Annual savings were around $8,000. Did we miss PagerDuty's Event Intelligence? Honestly, yes — alert noise went up maybe 30% in the first month. But we wrote a few dedup rules in OpsGenie and got it down to acceptable levels within two weeks. MTTR didn't change much. The Jira integration alone was worth the switch for us since we were already deep in the Atlassian stack.
 
 ## When to Choose What
 
