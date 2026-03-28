@@ -88,13 +88,24 @@ export default function Home() {
 
         {/* Post grid */}
         <div className="grid gap-6 sm:grid-cols-2">
-          {posts.map((post) => (
+          {posts.slice(0, 8).map((post) => (
             <PostCard key={post.slug} post={post} />
           ))}
         </div>
 
         {posts.length === 0 && (
           <p className="text-on-surface-variant">No posts yet. Stay tuned!</p>
+        )}
+
+        {posts.length > 8 && (
+          <div className="mt-10 text-center">
+            <Link
+              href="/posts"
+              className="inline-flex items-center rounded-lg border border-outline-variant/20 bg-surface-container-highest px-6 py-3 text-sm font-semibold text-on-surface transition-colors hover:bg-surface-bright"
+            >
+              View All {posts.length} Reviews &rarr;
+            </Link>
+          </div>
         )}
 
         {/* Newsletter */}

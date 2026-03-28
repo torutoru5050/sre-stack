@@ -56,7 +56,7 @@ export default async function PostPage({ params }: Props) {
     description: post.excerpt,
     author: {
       "@type": "Person",
-      name: post.author ?? "SaaSPedia Team",
+      name: post.author ?? "Toru Iwabuchi",
       url: "https://saaspedia.dev/about",
     },
     publisher: {
@@ -179,14 +179,16 @@ export default async function PostPage({ params }: Props) {
           {/* Author */}
           <div className="mt-8 flex items-center gap-3 border-t border-outline-variant/15 pt-6">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
-              {(post.author ?? "ST")[0]}
+              {(post.author ?? "Toru Iwabuchi")[0]}
             </div>
             <div>
               <p className="text-sm font-medium text-on-surface">
-                {post.author ?? "SaaSPedia Team"}
+                {post.author ?? "Toru Iwabuchi"}
               </p>
-              <p className="text-xs text-on-surface-variant">
-                Independent reviewer &middot; Tested hands-on
+              <p className="text-xs leading-relaxed text-on-surface-variant">
+                SRE at a global tech company. Obsessed with automation
+                <br className="hidden sm:inline" />
+                {" "}and cutting operational toil. Running multiple side projects.
               </p>
             </div>
           </div>

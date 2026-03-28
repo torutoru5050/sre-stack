@@ -1,3 +1,5 @@
+import TrackableLink from "./TrackableLink";
+
 interface AffiliateCTAProps {
   name: string;
   url: string;
@@ -54,14 +56,13 @@ export default function AffiliateCTA({
         {description}
       </p>
       <div className="mt-4 flex items-center gap-4">
-        <a
+        <TrackableLink
           href={url}
-          target="_blank"
-          rel="noopener noreferrer nofollow"
+          name={name}
           className="primary-gradient inline-block rounded-lg px-6 py-2.5 text-sm font-semibold text-surface-container-lowest shadow-lg shadow-primary/20 transition-opacity hover:opacity-90"
         >
           {cta} &rarr;
-        </a>
+        </TrackableLink>
         {note && <span className="text-xs text-outline">{note}</span>}
       </div>
     </div>
