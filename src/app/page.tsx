@@ -1,5 +1,6 @@
 import { getAllPosts, getAllTags } from "@/lib/posts";
 import PostCard from "@/components/PostCard";
+import NewsletterForm from "@/components/NewsletterForm";
 import Link from "next/link";
 
 export default function Home() {
@@ -109,16 +110,7 @@ export default function Home() {
               No marketing fluff. Just technical deep-dives and SaaS comparison
               matrices delivered to your inbox every Tuesday.
             </p>
-            <p className="mt-6 text-sm text-on-surface-variant">
-              Newsletter launching soon.{" "}
-              <a
-                href="mailto:hello@saaspedia.dev"
-                className="text-primary transition-colors hover:text-primary-dim"
-              >
-                Email us
-              </a>{" "}
-              to get on the list.
-            </p>
+            <NewsletterForm />
           </div>
         </div>
       </div>
