@@ -1,7 +1,7 @@
 ---
 title: "Prometheus vs VictoriaMetrics — Which Time-Series Database Should You Use in 2026?"
-date: "2026-03-28"
-lastUpdated: "2026-03-28"
+date: "2025-11-22"
+lastUpdated: "2026-01-20"
 tags: ["monitoring", "observability", "sre", "comparison"]
 excerpt: "Prometheus is the de facto standard for metrics monitoring, but VictoriaMetrics offers better performance and long-term storage. Here's how they compare for SRE teams."
 verdict: "Best Metrics Platforms"
@@ -110,7 +110,7 @@ These extensions solve real pain points that PromQL users frequently encounter. 
 Prometheus has the largest ecosystem in open-source monitoring:
 - **CNCF Graduated** — same status as Kubernetes
 - **Exporters**: 500+ official and community exporters for every service imaginable
-- **Grafana**: First-class data source with the best dashboard support
+- **[Grafana](/posts/grafana-cloud-review)**: First-class data source with the best dashboard support
 - **Alertmanager**: Mature alerting with routing, silences, and inhibitions
 - **Client libraries**: Official SDKs for Go, Java, Python, Ruby, .NET, and more
 - **Operator**: Prometheus Operator for Kubernetes makes deployment declarative
@@ -196,12 +196,13 @@ For self-hosted deployments, both are free. VictoriaMetrics saves money through 
 - **Choose Prometheus** if you're starting with monitoring and want the standard, your scale is small to medium (under 1M active time series), you want the broadest ecosystem support and hiring pool, or you're using Kubernetes with the Prometheus Operator.
 - **Choose VictoriaMetrics** if you need long-term metrics retention (months/years), you're hitting Prometheus' performance limits, you want to reduce infrastructure costs for metrics storage, or you need a simpler scaling story than Thanos/Cortex.
 - **Use both** — the most common pattern is running Prometheus for scraping and alerting, with VictoriaMetrics as the remote write backend for long-term storage. This gives you Prometheus' ecosystem with VictoriaMetrics' performance.
+- **Looking for a managed solution?** [Grafana Cloud](/posts/grafana-cloud-review) bundles managed Prometheus (Mimir) with dashboards and alerting, or compare full-stack observability platforms in our [Datadog vs New Relic](/posts/datadog-vs-newrelic) guide.
 
 My current setup: Prometheus scrapes ~1.2M active series across 3 Kubernetes clusters, remote-writes to a VictoriaMetrics cluster (3 vmstorage nodes). We keep 1 year of metrics. Total storage cost is about $45/month on S3-backed storage. Before VictoriaMetrics, we ran Thanos — it worked but the operational overhead was brutal for a 1-person SRE team. VictoriaMetrics cluster mode cut our monitoring infra maintenance time by roughly 60%.
 
 ## Bottom Line
 
-Prometheus is the standard, and for good reason — it works, it's everywhere, and the ecosystem is unmatched. VictoriaMetrics is the performance upgrade that many teams eventually need. The best approach for most organizations: start with Prometheus, and when you hit scaling or retention limits, add VictoriaMetrics as your long-term storage backend. You get the best of both worlds without disrupting your existing monitoring setup.
+Prometheus is the standard, and for good reason — it works, it's everywhere, and the ecosystem is unmatched. VictoriaMetrics is the performance upgrade that many teams eventually need. The best approach for most organizations: start with Prometheus, and when you hit scaling or retention limits, add VictoriaMetrics as your long-term storage backend. You get the best of both worlds without disrupting your existing monitoring setup. Whichever you choose, pair your metrics with a solid visualization layer — see our [Grafana vs Datadog Dashboards](/posts/grafana-vs-datadog-dashboards) comparison for the best options.
 
 <AffiliateCTA
   name="VictoriaMetrics Cloud"

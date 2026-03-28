@@ -1,6 +1,6 @@
 ---
 title: "Supabase vs Firebase — Which Backend Platform Should You Use in 2026?"
-date: "2026-03-28"
+date: "2026-03-11"
 lastUpdated: "2026-03-28"
 tags: ["backend", "database", "baas", "developer-tools", "comparison"]
 excerpt: "Supabase vs Firebase compared: database model, authentication, real-time features, pricing, and developer experience. The definitive guide for choosing your backend platform."
@@ -109,7 +109,7 @@ This is Supabase's strongest argument.
 
 **Firebase** locks you into Google's ecosystem. Firestore's data model is proprietary, Cloud Functions run on Google Cloud, and migrating away means rewriting your entire data layer. If Google changes pricing or deprecates a feature (as they've done historically), you have limited options.
 
-**Supabase** uses PostgreSQL — the most portable database in existence. If you leave Supabase, your data is still in Postgres. You can run `pg_dump`, move to any Postgres provider (AWS RDS, Neon, Railway, your own server), and your application logic, queries, and RLS policies come with you. Self-hosting Supabase is officially supported.
+**Supabase** uses PostgreSQL — the most portable database in existence. If you leave Supabase, your data is still in Postgres. You can run `pg_dump`, move to any Postgres provider (AWS RDS, Neon, [Railway](/posts/fly-io-vs-railway), your own server), and your application logic, queries, and RLS policies come with you. Self-hosting Supabase is officially supported.
 
 ## Firebase: Pros & Cons
 
@@ -131,6 +131,7 @@ The biggest surprise migrating from Firebase to Supabase: how much smaller my co
 
 - **Choose Firebase** if you're building a mobile-first app that needs offline-first sync. If your data model is naturally document-oriented (social feeds, chat, IoT). If you want the most mature real-time infrastructure. If your team is already in the Google Cloud ecosystem.
 - **Choose Supabase** if your data is relational and you want the full power of SQL. If vendor lock-in is a concern and you want the option to self-host. If you prefer predictable, resource-based pricing. If you need advanced features like full-text search, vector search, or geospatial queries.
+- For deploying your frontend on top of either backend, see our [Vercel vs Netlify](/posts/vercel-vs-netlify) comparison. And for error tracking in your app, check out [Sentry vs Bugsnag](/posts/sentry-vs-bugsnag).
 
 ## Bottom Line
 
@@ -142,4 +143,4 @@ The biggest surprise migrating from Firebase to Supabase: how much smaller my co
   rating={4.6}
 />
 
-The Firebase vs Supabase debate ultimately comes down to SQL vs NoSQL — and in 2026, the pendulum has swung back toward relational. PostgreSQL's flexibility, portability, and extension ecosystem (especially pgvector for AI applications) give Supabase a compelling edge for new projects. Firebase remains the superior choice for apps that need offline-first sync and a polished mobile experience. For most new web applications, **Supabase's combination of SQL power, open-source freedom, and predictable pricing makes it the stronger default choice**. But if you're building a real-time mobile app, Firebase's decade of battle-testing is hard to argue against. Try both free tiers — your data model will tell you which one fits.
+The Firebase vs Supabase debate ultimately comes down to SQL vs NoSQL — and in 2026, the pendulum has swung back toward relational. PostgreSQL's flexibility, portability, and extension ecosystem (especially pgvector for AI applications) give Supabase a compelling edge for new projects. Firebase remains the superior choice for apps that need offline-first sync and a polished mobile experience. For most new web applications, **Supabase's combination of SQL power, open-source freedom, and predictable pricing makes it the stronger default choice**. But if you're building a real-time mobile app, Firebase's decade of battle-testing is hard to argue against. Try both free tiers — your data model will tell you which one fits. Whichever you choose, automate your deployments with a solid [CI/CD pipeline](/posts/github-actions-vs-gitlab-ci).

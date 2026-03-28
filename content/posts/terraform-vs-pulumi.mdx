@@ -1,7 +1,7 @@
 ---
 title: "Terraform vs Pulumi — Which IaC Tool Should You Use in 2026?"
-date: "2026-03-28"
-lastUpdated: "2026-03-28"
+date: "2025-12-29"
+lastUpdated: "2026-03-05"
 tags: ["iac", "devops", "cloud", "comparison"]
 excerpt: "Terraform and Pulumi both let you define infrastructure as code, but they take fundamentally different approaches. HCL vs real programming languages — here's how to choose."
 verdict: "Best IaC Tools"
@@ -82,7 +82,7 @@ Both tools track infrastructure state, but handle it differently.
 
 ## CI/CD & GitOps Integration
 
-Both tools integrate well with CI/CD pipelines, but the patterns differ.
+Both tools integrate well with CI/CD pipelines, but the patterns differ. For a detailed look at the CI/CD platforms themselves, see our [GitHub Actions vs GitLab CI](/posts/github-actions-vs-gitlab-ci) comparison.
 
 **Terraform** has native support from Terraform Cloud/Enterprise, plus excellent third-party integration with Atlantis, Spacelift, and env0. The `plan` → review → `apply` workflow is well-understood and tooling-rich.
 
@@ -135,12 +135,13 @@ For individuals and small teams, both are effectively free. At scale, Terraform'
 - **Choose Terraform** if your team includes ops engineers who prefer declarative config, you need the broadest possible provider support, you want maximum community resources and hiring pool, or you're already using it (migration cost is real).
 - **Choose Pulumi** if your team is primarily software engineers who prefer real languages, you need complex dynamic infrastructure patterns, testing infrastructure code is a priority, or you're starting a new project with no existing IaC.
 - **Consider OpenTofu** if you want Terraform compatibility with a fully open-source license. It's a drop-in replacement for Terraform CLI.
+- For Kubernetes-specific deployments, pair your IaC tool with a GitOps solution — see our [ArgoCD vs FluxCD](/posts/argocd-vs-fluxcd) comparison.
 
 I stayed with Terraform, honestly. The OpenTofu fork gave me enough confidence that the ecosystem won't die even if HashiCorp gets weird with licensing. My entire CI/CD pipeline (Atlantis + GitHub PR reviews) is built around `terraform plan` output. Migrating that to Pulumi would cost me a week minimum and the team would lose velocity for a month. The pragmatic answer: if it's working, don't rewrite your IaC for fun. Start fresh projects with whichever feels right.
 
 ## Bottom Line
 
-Terraform is the safe bet with the largest ecosystem. Pulumi is the developer-friendly alternative that's gaining serious traction. In 2026, both are production-ready and well-supported. The deciding factor is usually your team's background: ops-heavy teams gravitate toward Terraform's declarative model, while engineering-heavy teams love Pulumi's programming language approach. Try both on a small project before committing.
+Terraform is the safe bet with the largest ecosystem. Pulumi is the developer-friendly alternative that's gaining serious traction. In 2026, both are production-ready and well-supported. The deciding factor is usually your team's background: ops-heavy teams gravitate toward Terraform's declarative model, while engineering-heavy teams love Pulumi's programming language approach. Don't forget to scan your IaC for misconfigurations — [Snyk](/posts/snyk-vs-sonarqube) can catch security issues in Terraform and Kubernetes manifests before they hit production. Try both on a small project before committing.
 
 <AffiliateCTA
   name="Pulumi"

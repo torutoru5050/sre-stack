@@ -1,7 +1,7 @@
 ---
 title: "Snyk vs SonarQube — Security Scanning Comparison for DevSecOps (2026)"
-date: "2026-03-28"
-lastUpdated: "2026-03-28"
+date: "2026-02-22"
+lastUpdated: "2026-03-26"
 tags: ["security", "devsecops", "developer-tools", "comparison"]
 excerpt: "Snyk and SonarQube both scan your code for issues, but they focus on different problems. Dependency vulnerabilities vs code quality — here's how they compare."
 verdict: "Best Security Scanning Tools"
@@ -34,7 +34,7 @@ Snyk excels at Software Composition Analysis (SCA) — scanning your dependency 
 
 Snyk also scans:
 - **Container images** for OS-level vulnerabilities
-- **Infrastructure as Code** (Terraform, CloudFormation, Kubernetes manifests) for misconfigurations
+- **Infrastructure as Code** ([Terraform](/posts/terraform-vs-pulumi), CloudFormation, Kubernetes manifests) for misconfigurations
 - **Your own code** (Snyk Code) for security issues using semantic analysis
 
 ### SonarQube's Focus: Code Quality & Security
@@ -64,7 +64,7 @@ SonarQube performs deep static analysis of your source code. It finds:
 Snyk integrates everywhere developers already work:
 - **IDE plugins** (VS Code, IntelliJ, etc.) for real-time scanning
 - **Git integrations** (GitHub, GitLab, Bitbucket) for PR checks and auto-fix PRs
-- **CI/CD** (any pipeline) for build-time scanning
+- **CI/CD** ([any pipeline](/posts/github-actions-vs-gitlab-ci)) for build-time scanning
 - **CLI** for local scanning
 - **Container registries** (Docker Hub, ECR, GCR) for image scanning
 
@@ -136,13 +136,13 @@ SonarQube Community Edition is genuinely free and useful — many teams run it s
 
 - **Choose Snyk** if your primary concern is dependency vulnerabilities and supply chain security, you scan containers and IaC alongside code, you want automated fix PRs for known vulnerabilities, or you're a cloud-native team using open-source heavily.
 - **Choose SonarQube** if code quality and maintainability are as important as security, you want to enforce coding standards across teams, you need deep static analysis for bugs and security hotspots, or you want a free self-hosted option.
-- **Use both** — this is actually the most common pattern in mature DevSecOps organizations. SonarQube handles code quality and SAST, Snyk handles SCA and container scanning. They solve different problems and integrate cleanly in the same CI/CD pipeline.
+- **Use both** — this is actually the most common pattern in mature DevSecOps organizations. SonarQube handles code quality and SAST, Snyk handles SCA and container scanning. They solve different problems and integrate cleanly in the same [CI/CD pipeline](/posts/github-actions-vs-gitlab-ci).
 
 I run both in production. SonarQube Community Edition (free, self-hosted on a $20/month VM) handles code quality. Snyk free tier covers my open-source projects; paid tier for work repos. If I had to pick one for a solo developer or tiny team, I'd start with Snyk — dependency vulns are the bigger risk for most Node.js/Python projects. SonarQube becomes essential once you have 3+ developers and code quality starts drifting. The "use both" advice isn't just marketing — they genuinely catch different things.
 
 ## Bottom Line
 
-Snyk and SonarQube are better together than apart. If you must choose one, pick based on your biggest pain point: if it's vulnerable dependencies and supply chain risk, go Snyk. If it's code quality, bugs, and technical debt, go SonarQube. Both have generous free tiers — start there and expand as your security needs mature.
+Snyk and SonarQube are better together than apart. If you must choose one, pick based on your biggest pain point: if it's vulnerable dependencies and supply chain risk, go Snyk. If it's code quality, bugs, and technical debt, go SonarQube. Both have generous free tiers — start there and expand as your security needs mature. For runtime error tracking beyond static analysis, see our [Sentry vs Bugsnag](/posts/sentry-vs-bugsnag) comparison.
 
 <AffiliateCTA
   name="Snyk"

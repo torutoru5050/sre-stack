@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import MDXContent from "@/components/MDXContent";
 import PostCard from "@/components/PostCard";
+import NewsletterForm from "@/components/NewsletterForm";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -206,6 +207,14 @@ export default async function PostPage({ params }: Props) {
             </div>
           </div>
         )}
+
+        {/* Newsletter signup */}
+        <div className="mt-16 rounded-xl border border-outline-variant/10 bg-surface-container p-8 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-primary">Stay Updated</p>
+          <h3 className="mt-2 text-xl font-bold text-on-surface">Get More Comparisons</h3>
+          <p className="mt-2 text-sm text-on-surface-variant">Technical deep-dives delivered weekly. No spam.</p>
+          <NewsletterForm />
+        </div>
 
         {/* Back link bottom */}
         <div className="mt-12 border-t border-outline-variant/15 pt-8">

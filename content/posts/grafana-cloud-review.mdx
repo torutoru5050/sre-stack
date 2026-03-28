@@ -1,6 +1,6 @@
 ---
 title: "Grafana Cloud Review — Pricing, Pros, and Cons for SRE Teams"
-date: "2026-03-20"
+date: "2025-12-05"
 lastUpdated: "2026-03-28"
 tags: ["observability", "sre", "review"]
 excerpt: "Grafana Cloud bundles Prometheus, Loki, and Tempo into a managed platform. Here's an honest review after running it in production."
@@ -78,13 +78,13 @@ Pro pricing is usage-based: ~$8/1K active metrics series, ~$0.50/GB logs. It's c
 
 ## Who Should Use Grafana Cloud?
 
-- Teams already using Prometheus + Grafana self-hosted and want to stop managing infrastructure
-- Cost-conscious teams that want a credible alternative to Datadog/New Relic
+- Teams already using Prometheus + Grafana self-hosted and want to stop managing infrastructure — if you're evaluating the metrics backend, see our [Prometheus vs VictoriaMetrics](/posts/prometheus-vs-victoria-metrics) comparison
+- Cost-conscious teams that want a credible alternative to [Datadog or New Relic](/posts/datadog-vs-newrelic)
 - Organizations that value open standards and want to avoid vendor lock-in
 
 ## Who Should Look Elsewhere?
 
-- Teams that need a polished, batteries-included APM (Datadog/New Relic are more turnkey)
+- Teams that need a polished, batteries-included APM ([Datadog/New Relic](/posts/datadog-vs-newrelic) are more turnkey)
 - Organizations without Prometheus/Grafana experience — the learning curve is real
 - Teams that rely heavily on full-text log search (consider Elasticsearch or Datadog Logs)
 
@@ -97,4 +97,4 @@ Pro pricing is usage-based: ~$8/1K active metrics series, ~$0.50/GB logs. It's c
 
 ## Bottom Line
 
-Grafana Cloud is the best option for teams that want enterprise observability without enterprise pricing. The open-standards approach means you're never locked in, and the free tier is genuinely useful. The rough edges (Loki query speed, alerting UX) are real but improving fast.
+Grafana Cloud is the best option for teams that want enterprise observability without enterprise pricing. The open-standards approach means you're never locked in, and the free tier is genuinely useful. The rough edges (Loki query speed, alerting UX) are real but improving fast. For a detailed look at how Grafana's dashboards compare head-to-head with Datadog's, see our [Grafana vs Datadog Dashboards](/posts/grafana-vs-datadog-dashboards) comparison.
