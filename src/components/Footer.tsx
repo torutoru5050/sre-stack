@@ -2,59 +2,111 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-800 bg-gray-950 py-12">
-      <div className="mx-auto max-w-4xl px-6">
-        <div className="grid gap-8 sm:grid-cols-3">
+    <footer className="bg-surface-container-low">
+      <div className="mx-auto max-w-5xl px-6 py-16">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
-          <div>
-            <span className="text-lg font-bold text-white">
-              SaaS<span className="text-green-400">Pedia</span>
+          <div className="sm:col-span-2 lg:col-span-1">
+            <span className="text-lg font-bold text-on-surface">
+              SaaS<span className="text-primary">Pedia</span>
             </span>
-            <p className="mt-2 text-sm leading-relaxed text-gray-500">
-              Independent SaaS comparisons for the AI era. Written by engineers, for engineers.
+            <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">
+              Engineering precision for the modern software stack. We benchmark
+              tools based on latency, reliability, and developer experience.
             </p>
           </div>
 
-          {/* Links */}
+          {/* Explore */}
           <div>
-            <h4 className="text-sm font-semibold text-gray-300">Explore</h4>
-            <ul className="mt-3 space-y-2 text-sm text-gray-500">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+              Explore
+            </h4>
+            <ul className="mt-4 space-y-2.5 text-sm">
               <li>
-                <Link href="/tags/ai" className="hover:text-green-400 transition-colors">
+                <Link
+                  href="/tags/monitoring"
+                  className="text-on-surface-variant transition-colors hover:text-primary"
+                >
+                  Monitoring
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tags/incident-management"
+                  className="text-on-surface-variant transition-colors hover:text-primary"
+                >
+                  Incident Response
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tags/ci-cd"
+                  className="text-on-surface-variant transition-colors hover:text-primary"
+                >
+                  CI/CD
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tags/ai"
+                  className="text-on-surface-variant transition-colors hover:text-primary"
+                >
                   AI Tools
-                </Link>
-              </li>
-              <li>
-                <Link href="/tags/comparison" className="hover:text-green-400 transition-colors">
-                  Comparisons
-                </Link>
-              </li>
-              <li>
-                <Link href="/tags/developer-tools" className="hover:text-green-400 transition-colors">
-                  Developer Tools
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-green-400 transition-colors">
-                  About
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Disclosure */}
+          {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold text-gray-300">Transparency</h4>
-            <p className="mt-3 text-sm leading-relaxed text-gray-500">
-              Some links on this site are affiliate links. We may earn a
-              commission at no extra cost to you. This never influences our
-              ratings or recommendations.
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+              Company
+            </h4>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              <li>
+                <Link
+                  href="/about"
+                  className="text-on-surface-variant transition-colors hover:text-primary"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about#ethics"
+                  className="text-on-surface-variant transition-colors hover:text-primary"
+                >
+                  Ethics Policy
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="mailto:hello@saaspedia.dev"
+                  className="text-on-surface-variant transition-colors hover:text-primary"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Transparency */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-on-surface-variant">
+              Transparency
+            </h4>
+            <p className="mt-4 text-sm leading-relaxed text-on-surface-variant">
+              Some links on this site are affiliate links. Commission status
+              never influences our technical scorecard.
             </p>
           </div>
         </div>
 
-        <div className="mt-10 border-t border-gray-800 pt-6 text-center text-xs text-gray-600">
-          &copy; {new Date().getFullYear()} SaaSPedia. All rights reserved.
+        <div className="mt-12 border-t border-outline-variant/15 pt-8 text-center">
+          <p className="text-xs text-outline">
+            &copy; {new Date().getFullYear()} SaaSPedia. Engineering Precision
+            for DevOps.
+          </p>
         </div>
       </div>
     </footer>

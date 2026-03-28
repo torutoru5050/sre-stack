@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #030712;
-  --foreground: #e5e7eb;
+  --background: #080e1a;
+  --foreground: #e0e5f6;
 }
 
 html {
@@ -16,33 +16,63 @@ body {
   background: var(--background);
 }
 
+/* Glass navigation */
+.glass-nav {
+  background: rgba(8, 14, 26, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Hero gradient glow */
+.hero-gradient {
+  background: radial-gradient(
+    circle at top center,
+    rgba(105, 246, 184, 0.15) 0%,
+    rgba(8, 14, 26, 0) 70%
+  );
+}
+
+/* Primary gradient for CTAs */
+.primary-gradient {
+  background: linear-gradient(135deg, #69f6b8 0%, #06b77f 100%);
+}
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Article typography */
 .prose table {
   @apply w-full border-collapse overflow-hidden rounded-lg;
 }
 
 .prose thead {
-  @apply bg-gray-800/50;
+  @apply bg-surface-container-high;
 }
 
 .prose th {
-  @apply border border-gray-700 px-4 py-2.5 text-left text-sm font-semibold text-green-400;
+  @apply border border-outline-variant/15 px-4 py-2.5 text-left text-sm font-semibold text-primary;
 }
 
 .prose td {
-  @apply border border-gray-800 px-4 py-2.5 text-sm;
+  @apply border border-outline-variant/15 px-4 py-2.5 text-sm;
 }
 
 .prose tr:hover td {
-  @apply bg-gray-800/30;
+  @apply bg-surface-container-high/50;
 }
 
 .prose blockquote {
-  @apply border-l-green-400 bg-green-400/5 py-1 pl-4;
+  @apply border-l-primary bg-primary/5 py-1 pl-4;
 }
 
 .prose hr {
-  @apply border-gray-800;
+  @apply border-outline-variant/20;
 }
 
 .prose h2 {
@@ -51,4 +81,14 @@ body {
 
 .prose h3 {
   @apply scroll-mt-20;
+}
+
+/* Focus ring for interactive elements */
+.primary-gradient:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary ring-0;
+}
+
+a:focus-visible,
+button:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
 }

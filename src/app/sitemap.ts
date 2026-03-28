@@ -2,7 +2,7 @@ import { getAllPosts } from "@/lib/posts";
 import type { MetadataRoute } from "next";
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://srestack.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://saaspedia.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();

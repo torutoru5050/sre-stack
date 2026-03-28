@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import MDXContent from "@/components/MDXContent";
+import PostCard from "@/components/PostCard";
 import Link from "next/link";
 import type { Metadata } from "next";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -13,7 +14,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) return {};
 
   return {
@@ -29,14 +31,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function PostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+export default async function PostPage({ params }: Props) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
   if (!post) notFound();
+
+  // Related posts: same tags, exclude current
+  const allPosts = getAllPosts();
+  const relatedPosts = allPosts
+    .filter(
+      (p) =>
+        p.slug !== post.slug && p.tags.some((t) => post.tags.includes(t))
+    )
+    .slice(0, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "Review",
     headline: post.title,
+    name: post.title,
     datePublished: post.date,
     dateModified: post.lastUpdated ?? post.date,
     description: post.excerpt,
@@ -52,9 +65,13 @@ export default function PostPage({ params }: Props) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://saaspedia.dev/posts/${params.slug}`,
+      "@id": `https://saaspedia.dev/posts/${slug}`,
     },
     keywords: post.tags,
+    itemReviewed: {
+      "@type": "SoftwareApplication",
+      name: post.title.split("—")[0]?.trim() ?? post.title,
+    },
     ...(post.rating && {
       reviewRating: {
         "@type": "Rating",
@@ -71,32 +88,79 @@ export default function PostPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <article className="mx-auto max-w-3xl px-6 py-12">
-        <div className="mb-8">
-          {/* Verdict badge */}
-          {post.verdict && (
-            <div className="mb-4">
-              <span className="rounded-full bg-green-400/15 px-3 py-1 text-xs font-medium text-green-400 border border-green-400/30">
-                {post.verdict}
-              </span>
-            </div>
-          )}
+        {/* Back link */}
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1 text-sm text-primary transition-colors hover:text-primary-dim"
+        >
+          &larr; Back to Reviews
+        </Link>
 
-          {/* Meta */}
-          <div className="mb-4 flex flex-wrap items-center gap-3 text-sm text-gray-500">
-            <time>Published {post.date}</time>
+        <div className="mb-10 mt-6">
+          {/* Meta row */}
+          <div className="mb-4 flex flex-wrap items-center gap-3 text-xs text-on-surface-variant">
+            <time dateTime={post.date}>{post.date}</time>
             {post.lastUpdated && (
               <>
-                <span>&middot;</span>
-                <time className="text-green-400/70">Updated {post.lastUpdated}</time>
+                <span className="text-outline-variant">&middot;</span>
+                <time dateTime={post.lastUpdated} className="text-primary/70">
+                  Updated {post.lastUpdated}
+                </time>
               </>
             )}
-            <span>&middot;</span>
+            <span className="text-outline-variant">&middot;</span>
             <span>{post.readingTime}</span>
           </div>
 
-          <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+          {/* Title */}
+          <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-on-surface sm:text-4xl">
             {post.title}
           </h1>
+
+          {/* Rating & Verdict */}
+          <div className="mt-4 flex flex-wrap items-center gap-4">
+            {post.rating && (
+              <div
+                className="flex items-center gap-1"
+                role="img"
+                aria-label={`Rating: ${post.rating.toFixed(1)} out of 5`}
+              >
+                {Array.from({ length: 5 }, (_, i) => (
+                  <svg
+                    key={i}
+                    className="h-4 w-4"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78L10 1z"
+                      fill={
+                        i < Math.floor(post.rating!) ? "#facc15" : "#424855"
+                      }
+                      opacity={
+                        i < Math.floor(post.rating!)
+                          ? 1
+                          : i < post.rating!
+                            ? 0.5
+                            : 1
+                      }
+                    />
+                  </svg>
+                ))}
+                <span
+                  className="ml-1 text-sm font-medium text-yellow-400"
+                  aria-hidden="true"
+                >
+                  {post.rating.toFixed(1)}
+                </span>
+              </div>
+            )}
+            {post.verdict && (
+              <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+                {post.verdict}
+              </span>
+            )}
+          </div>
 
           {/* Tags */}
           <div className="mt-4 flex flex-wrap gap-2">
@@ -104,7 +168,7 @@ export default function PostPage({ params }: Props) {
               <Link
                 key={tag}
                 href={`/tags/${tag}`}
-                className="rounded-full bg-gray-800 px-3 py-1 text-xs text-green-400 hover:bg-gray-700 transition-colors"
+                className="rounded-full bg-surface-container-high px-3 py-1 text-xs text-primary transition-colors hover:bg-surface-container-highest"
               >
                 {tag}
               </Link>
@@ -112,15 +176,15 @@ export default function PostPage({ params }: Props) {
           </div>
 
           {/* Author */}
-          <div className="mt-6 flex items-center gap-3 border-t border-b border-gray-800 py-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-400/15 text-sm font-bold text-green-400">
+          <div className="mt-8 flex items-center gap-3 border-t border-outline-variant/15 pt-6">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
               {(post.author ?? "ST")[0]}
             </div>
             <div>
-              <p className="text-sm font-medium text-white">
+              <p className="text-sm font-medium text-on-surface">
                 {post.author ?? "SaaSPedia Team"}
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-on-surface-variant">
                 Independent reviewer &middot; Tested hands-on
               </p>
             </div>
@@ -129,11 +193,25 @@ export default function PostPage({ params }: Props) {
 
         <MDXContent source={post.content} />
 
-        {/* Back link */}
-        <div className="mt-12 border-t border-gray-800 pt-8">
+        {/* Related articles */}
+        {relatedPosts.length > 0 && (
+          <div className="mt-16">
+            <h2 className="mb-6 text-xs font-semibold uppercase tracking-[0.15em] text-on-surface-variant">
+              Related Comparisons
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedPosts.map((rp) => (
+                <PostCard key={rp.slug} post={rp} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Back link bottom */}
+        <div className="mt-12 border-t border-outline-variant/15 pt-8">
           <Link
             href="/"
-            className="text-green-400 hover:text-green-300 transition-colors"
+            className="text-primary transition-colors hover:text-primary-dim"
           >
             &larr; Back to all comparisons
           </Link>

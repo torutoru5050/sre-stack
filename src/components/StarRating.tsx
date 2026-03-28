@@ -6,7 +6,11 @@ export default function StarRating({
   max?: number;
 }) {
   return (
-    <div className="flex items-center gap-1">
+    <div
+      className="flex items-center gap-1"
+      role="img"
+      aria-label={`Rating: ${rating.toFixed(1)} out of ${max}`}
+    >
       {Array.from({ length: max }, (_, i) => {
         const fill =
           i + 1 <= Math.floor(rating)
@@ -21,6 +25,7 @@ export default function StarRating({
             viewBox="0 0 20 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
           >
             {fill === "full" && (
               <path
@@ -32,7 +37,7 @@ export default function StarRating({
               <>
                 <path
                   d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78L10 1z"
-                  fill="#374151"
+                  fill="#424855"
                 />
                 <path
                   d="M10 1v12.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78L10 1z"
@@ -43,13 +48,13 @@ export default function StarRating({
             {fill === "empty" && (
               <path
                 d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78L10 1z"
-                fill="#374151"
+                fill="#424855"
               />
             )}
           </svg>
         );
       })}
-      <span className="ml-1 text-sm font-medium text-yellow-400">
+      <span className="ml-1 text-sm font-medium text-yellow-400" aria-hidden="true">
         {rating.toFixed(1)}
       </span>
     </div>
