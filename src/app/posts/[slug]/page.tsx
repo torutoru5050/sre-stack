@@ -33,8 +33,37 @@ export default function PostPage({ params }: Props) {
   const post = getPostBySlug(params.slug);
   if (!post) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    description: post.excerpt,
+    author: {
+      "@type": "Organization",
+      name: "SaaSPedia",
+      url: "https://saaspedia.dev",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "SaaSPedia",
+      url: "https://saaspedia.dev",
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://saaspedia.dev/posts/${params.slug}`,
+    },
+    keywords: post.tags,
+  };
+
   return (
-    <article className="mx-auto max-w-3xl px-6 py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <article className="mx-auto max-w-3xl px-6 py-12">
       <div className="mb-8">
         <div className="mb-4 flex items-center gap-3 text-sm text-gray-500">
           <time>{post.date}</time>
@@ -66,5 +95,6 @@ export default function PostPage({ params }: Props) {
         </Link>
       </div>
     </article>
+    </>
   );
 }

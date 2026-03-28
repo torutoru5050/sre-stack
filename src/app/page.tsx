@@ -6,7 +6,21 @@ export default function Home() {
   const posts = getAllPosts();
   const tags = getAllTags();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "SaaSPedia",
+    url: "https://saaspedia.dev",
+    description:
+      "Honest comparisons and reviews of SaaS tools for the AI era.",
+  };
+
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     <div className="mx-auto max-w-4xl px-6 py-12">
       <section className="mb-12">
         <h1 className="text-4xl font-bold text-white">
@@ -42,5 +56,6 @@ export default function Home() {
         <p className="text-gray-500">No posts yet. Stay tuned!</p>
       )}
     </div>
+    </>
   );
 }
