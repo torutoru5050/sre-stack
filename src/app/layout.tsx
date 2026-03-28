@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "SaaSPedia",
   },
+  verification: {
+    google: "B2HQXwxEozQlbt6WStrsYsd9E5n_QageFoagcxT4pEA",
+  },
 };
 
 export default function RootLayout({
