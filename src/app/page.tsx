@@ -10,12 +10,11 @@ export default function Home() {
     <div className="mx-auto max-w-4xl px-6 py-12">
       <section className="mb-12">
         <h1 className="text-4xl font-bold text-white">
-          SRE Tools, Compared.
+          SaaS Tools, Compared.
         </h1>
         <p className="mt-4 text-lg text-gray-400">
-          Honest reviews and head-to-head comparisons of observability, incident
-          management, and DevOps tools &mdash; from engineers who actually use
-          them on-call.
+          Honest reviews and head-to-head comparisons of SaaS tools for the AI
+          era &mdash; from engineers who actually use them in production.
         </p>
       </section>
 

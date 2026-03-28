@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Posts tagged "${params.tag}"`,
-    description: `All SRE Stack articles about ${params.tag}`,
+    description: `All SaaSPedia articles about ${params.tag}`,
   };
 }
 

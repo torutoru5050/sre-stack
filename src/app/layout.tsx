@@ -8,18 +8,18 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "SRE Stack — Honest SRE & DevOps Tool Reviews",
-    template: "%s | SRE Stack",
+    default: "SaaSPedia — AI-Era SaaS Comparison & Reviews",
+    template: "%s | SaaSPedia",
   },
   description:
-    "Honest reviews and comparisons of SRE, observability, and incident management tools. Written by engineers, for engineers.",
+    "Honest comparisons and reviews of SaaS tools for the AI era. Written by engineers, for engineers.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://srestack.com"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://saaspedia.dev"
   ),
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "SRE Stack",
+    siteName: "SaaSPedia",
   },
 };
 
