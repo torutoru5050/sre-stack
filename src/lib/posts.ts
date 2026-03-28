@@ -9,9 +9,13 @@ export interface PostMeta {
   slug: string;
   title: string;
   date: string;
+  lastUpdated?: string;
   tags: string[];
   excerpt: string;
   readingTime: string;
+  author?: string;
+  verdict?: string;
+  rating?: number;
 }
 
 export interface Post extends PostMeta {
@@ -45,9 +49,13 @@ export function getPostMeta(slug: string): PostMeta | null {
     slug,
     title: data.title ?? slug,
     date: data.date ?? "",
+    lastUpdated: data.lastUpdated,
     tags: data.tags ?? [],
     excerpt: data.excerpt ?? content.slice(0, 160).replace(/\n/g, " "),
     readingTime: stats.text,
+    author: data.author,
+    verdict: data.verdict,
+    rating: data.rating,
   };
 }
 
@@ -63,9 +71,13 @@ export function getPostBySlug(slug: string): Post | null {
     slug,
     title: data.title ?? slug,
     date: data.date ?? "",
+    lastUpdated: data.lastUpdated,
     tags: data.tags ?? [],
     excerpt: data.excerpt ?? content.slice(0, 160).replace(/\n/g, " "),
     readingTime: stats.text,
+    author: data.author,
+    verdict: data.verdict,
+    rating: data.rating,
     content,
   };
 }

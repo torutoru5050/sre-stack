@@ -1,8 +1,14 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import AffiliateCTA from "./AffiliateCTA";
+import StarRating from "./StarRating";
+import ProsConsList from "./ProsConsList";
+import MethodologyBox from "./MethodologyBox";
 
 const components = {
   AffiliateCTA,
+  StarRating,
+  ProsConsList,
+  MethodologyBox,
 };
 
 export default function MDXContent({ source }: { source: string }) {

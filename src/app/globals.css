@@ -7,7 +7,48 @@
   --foreground: #e5e7eb;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
+}
+
+/* Article typography */
+.prose table {
+  @apply w-full border-collapse overflow-hidden rounded-lg;
+}
+
+.prose thead {
+  @apply bg-gray-800/50;
+}
+
+.prose th {
+  @apply border border-gray-700 px-4 py-2.5 text-left text-sm font-semibold text-green-400;
+}
+
+.prose td {
+  @apply border border-gray-800 px-4 py-2.5 text-sm;
+}
+
+.prose tr:hover td {
+  @apply bg-gray-800/30;
+}
+
+.prose blockquote {
+  @apply border-l-green-400 bg-green-400/5 py-1 pl-4;
+}
+
+.prose hr {
+  @apply border-gray-800;
+}
+
+.prose h2 {
+  @apply scroll-mt-20;
+}
+
+.prose h3 {
+  @apply scroll-mt-20;
 }
