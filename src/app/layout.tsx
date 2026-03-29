@@ -39,6 +39,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <Script id="impact-verify" strategy="beforeInteractive">
+          {`
+            var meta = document.createElement('meta');
+            meta.setAttribute('name', 'impact-site-verification');
+            meta.setAttribute('value', 'a665fd3e-4a3f-4de6-8353-ccbad7e5914a');
+            document.head.appendChild(meta);
+          `}
+        </Script>
+      </head>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
