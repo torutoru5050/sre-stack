@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "B2HQXwxEozQlbt6WStrsYsd9E5n_QageFoagcxT4pEA",
+    other: {
+      "impact-site-verification": ["a665fd3e-4a3f-4de6-8353-ccbad7e5914a"],
+    },
   },
 };
 
@@ -36,9 +39,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <head>
-        <meta name="impact-site-verification" content="a665fd3e-4a3f-4de6-8353-ccbad7e5914a" />
-      </head>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
