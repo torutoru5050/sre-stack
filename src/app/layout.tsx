@@ -39,17 +39,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <head>
-        <Script id="impact-verify" strategy="beforeInteractive">
+      <body className={`${inter.className} min-h-screen flex flex-col`}>
+        <Script id="impact-stat" strategy="afterInteractive">
           {`
-            var meta = document.createElement('meta');
-            meta.setAttribute('name', 'impact-site-verification');
-            meta.setAttribute('value', 'a665fd3e-4a3f-4de6-8353-ccbad7e5914a');
-            document.head.appendChild(meta);
+            (function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7129973-a266-4ac4-982d-56733071af641.js','script','impactStat',document,window);impactStat('transformLinks');impactStat('trackImpression');
           `}
         </Script>
-      </head>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
