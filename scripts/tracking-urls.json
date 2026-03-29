@@ -1,0 +1,96 @@
+{
+  "_comment": "承認されたアフィリエイトのトラッキングURLをここに記入してください。記入後に replace-affiliate-urls.ts を実行します。",
+  "Datadog": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://www.datadoghq.com", "https://www.datadoghq.com/"],
+    "files": [
+      "datadog-vs-newrelic.mdx",
+      "grafana-vs-datadog-dashboards.mdx",
+      "best-monitoring-tools-kubernetes.mdx",
+      "best-error-tracking-tools.mdx"
+    ]
+  },
+  "New Relic": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://newrelic.com", "https://newrelic.com/"],
+    "files": [
+      "datadog-vs-newrelic.mdx",
+      "best-monitoring-tools-kubernetes.mdx",
+      "best-error-tracking-tools.mdx"
+    ]
+  },
+  "Grafana Cloud": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://grafana.com/cloud/", "https://grafana.com/cloud", "https://grafana.com/products/cloud/", "https://grafana.com/products/oncall/"],
+    "files": [
+      "grafana-cloud-review.mdx",
+      "grafana-vs-datadog-dashboards.mdx",
+      "best-monitoring-tools-kubernetes.mdx",
+      "best-incident-management-tools.mdx",
+      "prometheus-vs-victoria-metrics.mdx"
+    ]
+  },
+  "PagerDuty": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://www.pagerduty.com", "https://www.pagerduty.com/", "https://www.pagerduty.com/pricing/"],
+    "files": [
+      "rootly-vs-pagerduty.mdx",
+      "opsgenie-vs-pagerduty.mdx",
+      "best-incident-management-tools.mdx"
+    ]
+  },
+  "Sentry": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://sentry.io", "https://sentry.io/", "https://sentry.io/pricing/"],
+    "files": [
+      "sentry-vs-bugsnag.mdx",
+      "best-error-tracking-tools.mdx"
+    ]
+  },
+  "Notion": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://www.notion.so", "https://www.notion.so/"],
+    "files": [
+      "notion-ai-vs-clickup-ai.mdx"
+    ]
+  },
+  "Terraform": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://www.hashicorp.com/products/terraform"],
+    "files": [
+      "terraform-vs-pulumi.mdx",
+      "best-iac-tools.mdx"
+    ]
+  },
+  "Cloudflare": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://www.cloudflare.com/", "https://www.cloudflare.com/plans/"],
+    "files": [
+      "cloudflare-vs-fastly.mdx"
+    ]
+  },
+  "Tailscale": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://tailscale.com/", "https://tailscale.com/pricing/"],
+    "files": [
+      "tailscale-vs-wireguard.mdx"
+    ]
+  },
+  "Supabase": {
+    "enabled": false,
+    "trackingUrl": "",
+    "originalUrls": ["https://supabase.com/", "https://supabase.com/pricing"],
+    "files": [
+      "supabase-vs-firebase.mdx"
+    ]
+  }
+}
